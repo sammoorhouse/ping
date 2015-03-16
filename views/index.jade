@@ -1,5 +1,21 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Ping
+  form(action="/" method="post")
+    select(name="initialAction")
+      option(value="GET", selected="true") Attempt to resolve
+      option(value="POST", disabled="true") HTTP POST
+      option(value="SendSOAP", disabled="true") Send SOAP
+    input(name="URL" type="text", placeholder="URL")
+    select(name="Cadence")
+      option(value="EveryMinute", disabled="true") Every minute
+      option(value="EveryTenMinutes", disabled="true") Every ten minutes
+      option(value="EveryHour", selected="true") Every hour
+      option(value="EveryDay", disabled="true") Every day
+    p then
+    select("resultAction")
+      option(value="NoAction", selected="true") Take no action
+      option(value="SearchForText", disabled="true") Search for text
+      option(value="XPathMatch", disabled="true") Match XPath
+    input(type="submit")
