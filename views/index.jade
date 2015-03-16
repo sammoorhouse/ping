@@ -5,18 +5,21 @@ block content
   script(src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js", type="text/javascript")
   form#msform(action="/" method="post")
     ul#progressbar
-      li.active Initial action
-      li Cadence
-      li Result action
+      li.active Do
+      li When
+      li Then
+      li About you
     fieldset
+      h2 Initial action
       select(name="initialAction")
         option(value="GET", selected="true") Attempt to resolve
         option(value="POST", disabled="true") HTTP POST
         option(value="SendSOAP", disabled="true") Send SOAP
-      input(name="URL" type="text", placeholder="URL")
+      input(name="URL" type="text", placeholder="URL", required)
       input(type="button", class="next action-button", name="next", value="Next")
     fieldset
-      select(name="Cadence")
+      h2 Every...
+      select(name="cadence")
         option(value="EveryMinute", disabled="true") Every minute
         option(value="EveryTenMinutes", disabled="true") Every ten minutes
         option(value="EveryHour", selected="true") Every hour
@@ -24,10 +27,17 @@ block content
       input(type="button", class="previous action-button", name="previous", value="Previous")
       input(type="button", class="next action-button", name="next", value="Next")
     fieldset
+      h2 Then do:
       select("resultAction")
         option(value="NoAction", selected="true") Take no action
         option(value="SearchForText", disabled="true") Search for text
         option(value="XPathMatch", disabled="true") Match XPath
+      input(type="button", class="previous action-button", name="previous", value="Previous")
+      input(type="button", class="next action-button", name="next", value="Next")
+    fieldset
+      h2 You
+      input(name="name" type="text", placeholder="name", required)
+      input(name="email" type="text", placeholder="email", required)
       input(type="button", class="previous action-button", name="previous", value="Previous")
       input(type="submit", class="submit action-button", name="next", value="Submit")
   script(src="javascripts/form.js")

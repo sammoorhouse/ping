@@ -12,6 +12,8 @@
     "express": "~4.11.1",
     "hashids": "^1.0.1",
     "jade": "~1.9.1",
+    "mongodb": "^1.4.34",
+    "mongoose": "^3.8.25",
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0"
   }
