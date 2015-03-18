@@ -66,9 +66,10 @@ router.post('/', function(req, res, next){
 
 router.get(/^\/results\/(\w+)$/, function(req,res,next){
 	var inId = req.params[0];
-	var blob = Blob.find({id : inId})
-	console.log(blob.username);
-	res.send(blob);
+	Blob.findOne({id : inId}, function(err, doc){
+		if(err) console.log(err);
+		else res.send(doc);
+	})
 });
 
 module.exports = router;
