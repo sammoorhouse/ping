@@ -68,7 +68,9 @@ router.get(/^\/results\/(\w+)$/, function(req,res,next){
 	var inId = req.params[0];
 	Blob.findOne({id : inId}, function(err, doc){
 		if(err) console.log(err);
-		else res.send(doc);
+		else {
+			res.render('result', { data: doc });
+		}
 	})
 });
 
