@@ -11,10 +11,10 @@ var Blob = mongoose.model(
 		username: String, 
 		email: String, 
 		url: String, 
-		dates: {
+		dates: [{
 			date: Date,
 			urlstatus: String
-		}
+		}]
 	})
 
 /* GET home page. */
@@ -38,6 +38,11 @@ function censor(censor) {
   }
 }
 
+router.get('/deleteall', function(req, res, next){
+	Blob.find().remove().exec();
+	res.render('done');
+})
+
 router.post('/', function(req, res, next){
 	//save results
 	console.log(req)
@@ -53,7 +58,7 @@ router.post('/', function(req, res, next){
 		username: inName,
 		email: inEmail,
 		url: inUrl,
-		dates: {}
+		dates: []
 	})
 	console.log(input);
 	input.save(function(err){
@@ -69,6 +74,7 @@ router.get(/^\/results\/(\w+)$/, function(req,res,next){
 	Blob.findOne({id : inId}, function(err, doc){
 		if(err) console.log(err);
 		else {
+			console.log(doc);
 			res.render('result', { data: doc });
 		}
 	})
